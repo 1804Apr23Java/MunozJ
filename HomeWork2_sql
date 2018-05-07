@@ -1,0 +1,289 @@
+--2. SQL Queries
+--2.1
+
+--Select all records from the Employee table.
+SELECT * FROM EMPLOYEE;
+
+--Select all records from the Employee table where last name is King.
+SELECT * FROM EMPLOYEE WHERE LASTNAME = 'King';
+
+--Select all records from the Employee table where first name is Andrew and REPORTSTO is NULL.
+SELECT * FROM EMPLOYEE WHERE (FIRSTNAME = 'Andrew' AND REPORTSTO IS NULL); 
+
+--2.2 Order By
+
+--Select all albums in Album table and sort result set in descending order by title.
+SELECT * FROM ALBUM ORDER BY TITLE DESC;
+
+--Select first name from Customer and sort result set in ascending order by city
+SELECT FIRSTNAME, CITY FROM CUSTOMER ORDER BY CITY; --I SLECTED NAME AND CITY TO VERIFY CORRECT SORTING
+
+--2.3 INSERT INTO
+-- Insert two new records into Genre table 
+INSERT INTO GENRE VALUES (26,'SLEEPY TIME JAZZ');
+INSERT INTO GENRE VALUES (27,'WAKE UP HOUSE');
+
+-- Insert two new records into Employee table
+INSERT INTO EMPLOYEE VALUES
+(9,'SMITH','JOHNJOHN','TEMP','3',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO EMPLOYEE VALUES
+(10,'STAR','KORI','TEMP','3','08-DEC-58',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+
+-- Insert two new records into Customer table
+INSERT INTO CUSTOMER VALUES 
+(60,'BRUCE','WAYNEZ','W',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'WAYNE@GMAIL.COM',NULL);
+INSERT INTO CUSTOMER VALUES 
+(61,'CLARK','KENTZ','K',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'OP@GMAIL.COM',NULL);
+
+--2.4 UPDATE
+--Update Aaron Mitchell in Customer table to Robert Walter
+UPDATE CUSTOMER SET FIRSTNAME = 'ROBERT', LASTNAME='WALTER' WHERE (FIRSTNAME = 'Aaron' AND LASTNAME='Mitchell');
+
+--Update name of artist in the Artist table “Creedence Clearwater Revival” to “CCR”	
+UPDATE ARTIST SET NAME = 'CCR' WHERE NAME = 'Creedence Clearwater Revival';
+
+--2.5 LIKE
+-- Select all invoices with a billing address like “T%” 
+SELECT * FROM INVOICE WHERE BILLINGADDRESS LIKE 'T%';
+
+--2.6 BETWEEN
+--Select all invoices that have a total between 15 and 50
+SELECT * FROM INVOICE WHERE TOTAL BETWEEN 15 AND 50;
+
+--Select all employees hired between 1st of June 2003 and 1st of March 2004
+SELECT * FROM EMPLOYEE WHERE HIREDATE BETWEEN '01-JUN-03' AND '01-MAR-04';
+
+--2.7 DELETE
+--Delete a record in Customer table where the name is Robert Walter 
+--(There may be constraints that rely on this, find out how to resolve them).
+
+--3.1 System Defined Functions
+-- Create a function that returns the current time.
+CREATE OR REPLACE FUNCTION RETURN_CURRENT_TIME
+RETURN TIMESTAMP
+IS
+my_var TIMESTAMP;
+BEGIN
+    my_var:=SYSTIMESTAMP;
+    RETURN my_var;
+END;
+SELECT RETURN_CURRENT_TIME() FROM DUAL; --CHECKS OUTPUT FROM MY FUNCTION
+
+-- create a function that returns the length of name in MEDIATYPE table
+CREATE OR REPLACE FUNCTION RETURN_MAX_NAME_LENGTH
+RETURN NUMBER
+IS
+my_var NUMBER;
+MAXL NUMBER;
+BEGIN
+    SELECT max(length(NAME)) INTO  MAXL  FROM MEDIATYPE;
+    my_var:= MAXL;
+    RETURN my_var;
+END;
+SELECT RETURN_MAX_NAME_LENGTH() FROM DUAL; --CHECKS OUTPUT FROM MY FUNCTION
+
+--3.2 System Defined Aggregate Functions
+-- Create a function that returns the average total of all invoices 
+CREATE OR REPLACE FUNCTION RETURN_AVG_TOTAL
+RETURN NUMBER
+IS
+total_invoices NUMBER;
+total_sum NUMBER;
+my_total NUMBER;
+BEGIN
+    SELECT COUNT (INVOICEID) INTO total_invoices FROM INVOICE;
+    SELECT SUM(TOTAL) INTO total_sum FROM INVOICE;
+    my_total:=total_sum/total_invoices;
+    RETURN my_total;
+END;
+SELECT RETURN_AVG_TOTAL() FROM DUAL; --CAN USE THIS QUERY TO CHECK FUNCTION
+
+-- Create a function that returns the most expensive track
+INSERT INTO Track (TrackId, Name, AlbumId, MediaTypeId, GenreId, Composer, Milliseconds, Bytes, UnitPrice) 
+VALUES (3504, 'JLM SONG', 347, 2, 10, 'JOSE LUIS', 206005, 3305164, 2.99);
+-- ADDED A MOST EXPENSIVE TRACK SINCE THERE WERE MULTIPLE THAT WERE "MOST EXPENSIVE"
+CREATE OR REPLACE FUNCTION RETURN_MAX_PRICE
+RETURN VARCHAR2
+IS
+max_price NUMBER;
+max_name VARCHAR2(200 BYTE);
+max_id NUMBER;
+BEGIN
+    SELECT MAX(UNITPRICE) INTO max_price FROM TRACK;
+    SELECT NAME INTO max_name FROM TRACK WHERE UNITPRICE = max_price;
+    RETURN max_name;
+END;
+SELECT RETURN_MAX_PRICE() FROM DUAL; -- CHECKS FUNCTION
+
+--3.3 User Defined Scalar Functions
+-- Create a function that returns the average price of invoiceline items in the invoiceline table
+CREATE OR REPLACE FUNCTION RETURN_AVG_PRICE_INVOICELINE
+RETURN NUMBER
+IS
+total_invoices NUMBER;
+total_sum NUMBER;
+my_avg NUMBER;
+BEGIN
+    SELECT COUNT (INVOICELINEID) INTO total_invoices FROM INVOICELINE;
+    SELECT SUM(UNITPRICE) INTO total_sum FROM INVOICELINE;
+    my_avg:=total_sum/total_invoices;
+    RETURN my_avg;
+END;
+
+SELECT RETURN_AVG_PRICE_INVOICELINE() FROM DUAL; --CAN USE THIS QUERY TO CHECK FUNCTION
+
+--4.0 Stored Procedures
+-- In this section you will be creating and executing stored procedures. 
+--You will be creating various types of stored procedures that take input and output parameters.
+--4.1 Basic Stored Procedure
+-- Create a stored procedure that selects the first and last names of all the employees.
+
+CREATE OR REPLACE PROCEDURE EMP_FIRST_LAST_NAMES (
+    S     OUT SYS_REFCURSOR
+)
+IS
+BEGIN
+    OPEN S FOR 
+    SELECT FIRSTNAME, LASTNAME 
+    FROM EMPLOYEE;
+END;
+
+DECLARE
+    S    SYS_REFCURSOR;
+    v_empFIRST         EMPLOYEE.FIRSTNAME%TYPE;
+    v_empLAST         EMPLOYEE.LASTNAME%TYPE;
+
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('EMPLOYEES ');
+    DBMS_OUTPUT.PUT_LINE('FIRSTNAME    LASTNAME');
+    DBMS_OUTPUT.PUT_LINE('-----    -------');
+    EMP_FIRST_LAST_NAMES (S);
+    LOOP
+        FETCH S INTO v_empFIRST, v_empLAST;
+        EXIT WHEN S%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_empFIRST || '     ' || v_empLAST);
+    END LOOP;
+    CLOSE S;
+END;
+
+--4.2 Stored Procedure Input Parameters
+-- Create a stored procedure that updates the personal information of an employee.
+CREATE OR REPLACE PROCEDURE CHANGE_TITLE(EMP_NUM NUMBER, NEW_TITLE VARCHAR2)
+IS
+BEGIN
+    UPDATE EMPLOYEE SET TITLE = NEW_TITLE 
+    WHERE EMPLOYEEID = EMP_NUM;
+
+END;
+/
+EXECUTE CHANGE_TITLE(10,'TEEN TITAN'); -- USED TO CHECK SP
+
+--Create a stored procedure that returns the managers of an employee.
+CREATE OR REPLACE PROCEDURE GET_MNGR(DEPT VARCHAR2, MLAST OUT VARCHAR2)
+IS
+
+BEGIN
+    SELECT LASTNAME INTO MLAST FROM EMPLOYEE
+    WHERE TITLE LIKE DEPT||'%' AND TITLE LIKE '%Manager%';
+END;
+
+--THESE STATEMENTS BELOW CHECK FOR AN IT EMPLOYEE
+VARIABLE K VARCHAR2;
+EXECUTE GET_MNGR('IT', :K);
+PRINT K;
+-- THE SP TAKES IN AN EMPLOYEES DEPARTMEN (EXAMPLE: IT OR SALES)
+-- THEN OUTPUTS THE MANAGERS LAST NAME
+
+--4.3 Stored Procedure Output Parameters
+-- Create a stored procedure that returns the name and company of a customer.
+CREATE OR REPLACE PROCEDURE EMP_PRINT_NAME_COMPANY 
+    (CUSTOMER_ID NUMBER, c_name OUT VARCHAR2, c_last OUT VARCHAR2, c_comp OUT VARCHAR2)
+IS
+
+BEGIN
+    SELECT FIRSTNAME,LASTNAME,COMPANY INTO c_name,c_last,c_comp FROM CUSTOMER WHERE CUSTOMERID = CUSTOMER_ID;
+END;
+
+--BELOW PRINTS THE RETURNED VALUES
+VARIABLE X VARCHAR2;
+VARIABLE Y VARCHAR2;
+VARIABLE Z VARCHAR2;
+EXECUTE EMP_PRINT_NAME_COMPANY(12, :X, :Y, :Z);
+PRINT X;
+PRINT Y;
+PRINT Z;
+
+--5.0 Transactions
+--In this section you will be working with transactions. Transactions are usually nested within a stored procedure.
+-- Create a transaction that given a invoiceId will delete that invoice 
+--(There may be constraints that rely on this, find out how to resolve them).
+
+--6.0 Triggers
+--In this section you will create various kinds of triggers that work when certain DML statements are executed on a table.
+--6.1 AFTER/FOR
+-- Create an after insert trigger on the employee table fired after a new record is inserted into the table.
+CREATE OR REPLACE TRIGGER TR_INS_NEW_EMP AFTER
+    INSERT ON EMPLOYEE FOR EACH ROW
+    DECLARE
+    BEGIN
+         dbms_output.put_LINE('I AM TRIGGERED');
+    END;
+SET SERVEROUTPUT ON; --THIS LETS ME SEE THE DBMS MSG I ADDED, IN THE VIEW DBMS OUTPUT WINDOW
+INSERT INTO EMPLOYEE VALUES
+(13,'SHOT','DEAD','TEMP','3','08-DEC-58',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+
+-- Create an after update trigger on the album table that fires after a row is inserted in the table
+CREATE OR REPLACE TRIGGER TR_INS_NEW_ALBUM AFTER
+    UPDATE ON ALBUM FOR EACH ROW
+    DECLARE
+    BEGIN
+         dbms_output.put_LINE('I AM TRIGGERED ALBUM');
+    END;
+-- Create an after delete trigger on the customer table that fires after a row is deleted from the table.
+CREATE OR REPLACE TRIGGER TR_DEL_CUS AFTER
+    DELETE ON CUSTOMER FOR EACH ROW
+    DECLARE
+    BEGIN
+         dbms_output.put_LINE('I AM BATMAN');
+    END;
+
+--7.0 JOINS
+--In this section you will be working with combining various tables through 
+--the use of joins. You will work with outer, inner, right, left, cross, and self joins.
+--7.1 INNER
+--Task – Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
+SELECT CUSTOMER.FIRSTNAME,CUSTOMER.LASTNAME, INVOICE.INVOICEID
+FROM CUSTOMER 
+INNER JOIN INVOICE
+ON CUSTOMER.CUSTOMERID = INVOICE.CUSTOMERID;
+
+--7.2 OUTER
+-- Create an outer join that joins the customer and invoice table, 
+--specifying the CustomerId, firstname, lastname, invoiceId, and total.
+SELECT CUSTOMER.CUSTOMERID, CUSTOMER.FIRSTNAME, CUSTOMER.LASTNAME, INVOICE.INVOICEID, INVOICE.TOTAL
+FROM CUSTOMER
+LEFT OUTER JOIN INVOICE
+ON CUSTOMER.CUSTOMERID = INVOICE.CUSTOMERID;
+
+--7.3 RIGHT
+-- Create a right join that joins album and artist specifying artist name and title.
+SELECT ARTIST.NAME, ALBUM.TITLE
+FROM ALBUM
+RIGHT OUTER JOIN ARTIST
+ON ALBUM.ARTISTID = ARTIST.ARTISTID;
+
+--7.4 CROSS
+-- Create a cross join that joins album and artist and sorts by artist name in ascending order.
+SELECT ARTIST.NAME
+FROM ALBUM
+CROSS JOIN ARTIST
+WHERE ALBUM.ARTISTID = ARTIST.ARTISTID ORDER BY ARTIST.NAME;
+
+--7.5 SELF
+-- Perform a self-join on the employee table, joining on the reportsto column.
+SELECT A.FIRSTNAME AS EMPName1, B.FIRSTNAME AS EMPName2
+FROM EMPLOYEE A, EMPLOYEE B
+WHERE A.REPORTSTO = B.REPORTSTO;
+
+
+
