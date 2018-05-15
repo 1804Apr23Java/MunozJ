@@ -11,7 +11,7 @@
 </head>
 <body>
 Books
-<table  class="table table-dark"  style="width:100%">
+<table  id="myTable" class="table table-dark"  style="width:100%">
   <tr>
     <th>Title</th>
     <th>Author</th> 
@@ -34,12 +34,34 @@ Books
 	<button id="myBtn" type="button" class="btn btn-primary">View Cover</button>
 	</td>
   </tr>
+  
+  
+  
+ <!-- /*  var row = document.createElement("tr");
+ 
+    for (var j = 0; j < 2; j++) {
+      // Create a <td> element and a text node, make the text
+      // node the contents of the <td>, and put the <td> at
+      // the end of the table row
+      var cell = document.createElement("td");
+      var cellText = document.createTextNode("cell in row "+i+", column "+j);
+      cell.appendChild(cellText);
+      row.appendChild(cell);*/-->
 </table>
+<form id="newBook">
+  Title:<br>
+  <input type="text" name="newTitle"><br>
+  Author:<br>
+  <input type="text" name="newAuthor"><br>
+  Genre:<br>
+  <input type="text" name="newGenre">
+</form>
+<button id="addBook">Add Book!</button>
 
 
 <!-- /*bootstrap*/ -->
-<!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
+<!-- Trigger/Open The Modal 
+<button id="myBtn">Open Modal</button> -->
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -68,6 +90,65 @@ Books
 </div>
 
 	<script>
+	
+	var getButton = document.getElementById("addBook");
+	getButton.addEventListener("click", createNewBook);
+	var getTitle = document.getElementsByName("newTitle");
+	var getAuthor = document.getElementsByName("newAuthor");
+	var getGenre = document.getElementsByName("newGenre");
+	var getButtonz = document.getElementsByClassName("btn btn-primary");
+	
+	var getTable = document.getElementById("myTable");
+	
+	function createNewBook(){
+	console.log("testing add new book");
+	
+	
+	var cell = document.createElement("td");
+	var cell2 = document.createElement("td");
+	var cell3 = document.createElement("td");
+	var cell4 = document.createElement("button");
+	
+	var row = document.createElement("tr");
+	
+	cell.innerHTML=getTitle[0].value;
+	cell2.innerHTML=getAuthor[0].value;
+	cell3.innerHTML=getGenre[0].value;
+	cell4.type="button";
+	cell4.class="btn btn-primary";
+	cell4.innerHTML="view cover";
+	cell4.id="myBtn";
+	
+	row.appendChild(cell);
+	row.appendChild(cell2);
+	row.appendChild(cell3);
+	row.appendChild(cell4);
+	
+
+	
+	getTable.appendChild(row);
+	/*
+	
+
+	getTable.cell.appendChild(getTitle[0].value);
+	getTable.row.appendChild(cell);
+	*/
+
+	console.log(getTitle[0].value);
+	console.log(getAuthor[0].value);
+	console.log(getGenre[0].value);
+	}
+	
+	 /*  var row = document.createElement("tr");
+ 
+    for (var j = 0; j < 2; j++) {
+      // Create a <td> element and a text node, make the text
+      // node the contents of the <td>, and put the <td> at
+      // the end of the table row
+      var cell = document.createElement("td");
+      var cellText = document.createTextNode("cell in row "+i+", column "+j);
+      cell.appendChild(cellText);
+      row.appendChild(cell);*/
 	// Get the modal
 	var modal = document.getElementById('myModal');
 	var modal2 = document.getElementById('myModal2');
