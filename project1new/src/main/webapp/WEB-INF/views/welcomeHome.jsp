@@ -6,6 +6,10 @@
 <title>User Homepage!!</title>
 </head>
 <body>
-Welcome ${name}
+Welcome to your homepage ${name}
+<br><br>
+This is your user info:
+<br>
+Email: ${email}
 </body>
 </html>

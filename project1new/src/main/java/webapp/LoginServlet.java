@@ -28,8 +28,18 @@ public class LoginServlet extends HttpServlet {
 		request.setAttribute("name", request.getParameter("name"));
 		
 		Helper h1 = new Helper();
-		String retEmail = h1.grabEmail("name");
+		System.out.println("name looking for is: "+request.getParameter("name"));
+		String retEmail ="retemail";
+		try {
+			retEmail = h1.grabEmail(request.getParameter("name"));
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println(retEmail);
+	//	
+		request.setAttribute("email", retEmail);
+	//	
 		request.getRequestDispatcher("/WEB-INF/views/welcomeHome.jsp").forward(request, response);
 	}
 }
