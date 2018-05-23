@@ -6,7 +6,7 @@
 <title>User Homepage!!</title>
 </head>
 <body>
-Welcome to your homepage ${name}
+Welcome to your homepage ${username}
 <br><br>
 This is your user info:
 <br>

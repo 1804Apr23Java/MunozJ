@@ -11,6 +11,8 @@
 	<form action="login.do" method="POST">
 		Username<input name="name" type="text" /> <br>
 		Password  <input name="password" type="password" /> <input type="submit" />
+		<br>
+		<p><font color ="red">${problem}</font></p>
 	</form>
 </body>
 </html>
