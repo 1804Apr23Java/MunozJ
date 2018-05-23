@@ -11,5 +11,13 @@ Welcome to your homepage ${username}
 This is your user info:
 <br>
 Email: ${email}
+<br><br><br>
+
+	<form action="Logout.jsp" method="POST">
+		<br>
+		 <input type="submit" value="Logout"/>
+		<br>
+		
+	</form>
 </body>
 </html>
