@@ -11,6 +11,9 @@
 <!--  -->
 <%
 String id = (String)session.getAttribute("username");
+String namep = (String)session.getAttribute("nameUp");
+String comm = (String)session.getAttribute("commentUp");
+String urel = (String)session.getAttribute("urlUp");
 
 String userId = "root";
 String password = "root";
@@ -139,6 +142,20 @@ while(resultSet.next()){
 e.printStackTrace();
 }
 %>
-</table>
+<%
+//session.setAttribute("comm", comm);
+//session.setAttribute("urel", urel);
+System.out.println("comm: "+comm);
+System.out.println("urel" +urel);
+%>
+</table><br>
+New Request Form
+	<form action="requestForm.html" >
+		 <input type="submit" /></form>>
+		<br>
+<!-- new unstable -->
+
+
+<!--  -->
 </body>
 </html>
