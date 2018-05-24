@@ -57,10 +57,10 @@ Email: ${email}
 
 </tr>
 <tr bgcolor="#611F6F">
-<td><font color="white"><b>id</b></font></td>
-<td><font color="white"><b>username</b></font></td>
-<td><font color="white"><b>comment</b></font></td>
-<td><font color="white"><b>Manager</b></font></td>
+<td><font color="white"><b>Id</b></font></td>
+<td><font color="white"><b>Username</b></font></td>
+<td><font color="white"><b>Comment</b></font></td>
+<td><font color="white"><b>Img url</b></font></td>
 <td><font color="white"><b>Staus</b></font></td>
 </tr>
 
@@ -84,7 +84,7 @@ while(resultSet.next()){
 <td><%=resultSet.getInt("RE_ID") %></td>
 <td><%=resultSet.getString("EMP_USERBAME") %></td>
 <td><%=resultSet.getString("EMP_COMMENT") %></td>
-<td><%=resultSet.getString("MNG_NAME") %></td>
+<td><%=resultSet.getString("IMG_URL") %></td>
 <td><%=resultSet.getString("STATUS") %></td>
 
 </tr>
@@ -151,7 +151,7 @@ System.out.println("urel" +urel);
 </table><br>
 New Request Form
 	<form action="requestForm.html" >
-		 <input type="submit" /></form>>
+		 <input type="submit" value="Yes Please"/></form>
 		<br>
 <!-- new unstable -->
 

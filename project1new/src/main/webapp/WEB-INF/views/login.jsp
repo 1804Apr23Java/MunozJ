@@ -11,7 +11,7 @@
 	<p><font color="red">${errorMessage}</font></p>
 	<form action="login.do" method="POST">
 		Username<input name="name" type="text" /> <br>
-		Password  <input name="password" type="password" /> <input type="submit" />
+		Password  <input name="password" type="password" /> <input type="submit" value="Login" />
 		<br>
 		<p><font color ="red">${problem}</font></p>
 	</form>

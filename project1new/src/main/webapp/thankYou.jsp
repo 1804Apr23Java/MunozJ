@@ -33,13 +33,13 @@ e.printStackTrace();
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Thank You</title>
 </head>
 <body>
 Thank you for your request
   	<form action="welcomeHome.jsp" method="GET">
 		<br>
-		 <input type="submit" value="Go back to Login"/>
+		 <input type="submit" value="Go back to Homepage"/>
 		<br>
 		
 	</form>

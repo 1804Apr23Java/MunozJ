@@ -49,11 +49,12 @@ PreparedStatement pstmt = null;
 
 </tr>
 <tr bgcolor="#611F6F">
-<td><font color="white"><b>id</b></font></td>
-<td><font color="white"><b>username</b></font></td>
-<td><font color="white"><b>comment</b></font></td>
+<td><font color="white"><b>Id</b></font></td>
+<td><font color="white"><b>Username</b></font></td>
+<td><font color="white"><b>Comment</b></font></td>
 <td><font color="white"><b>Manager</b></font></td>
 <td><font color="white"><b>Staus</b></font></td>
+<td><font color="white"><b> Action  </b></font></td>
 </tr>
 
 	<!--  -->
@@ -78,7 +79,11 @@ while(resultSet.next()){
 <td><%=resultSet.getString("EMP_COMMENT") %></td>
 <td><%=resultSet.getString("MNG_NAME") %></td>
 <td><%=resultSet.getString("STATUS") %></td>
-
+<td>
+  	<form action="mgrApprove.html" method="GET">
+		 <input type="submit" value="Approve"/></form>
+  	<form action="mgrApprove.html" method="GET">
+		 <input type="submit" value="--Deny--"/></form></td>
 </tr>
 <% 
 }
