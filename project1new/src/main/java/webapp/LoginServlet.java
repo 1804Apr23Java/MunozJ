@@ -58,16 +58,34 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("Password =" +password);
 		System.out.println(um.getUserModel(username).toString());
 		//authenticate user
-		if(password.equals("pass")) {
+		//adding manger stuff
+		if (um.getIsAdmin(um.getUserModel(username)).equals("1")
+				&&(password.equals(um.getPassCheck(um.getUserModel(username))))) {
+			System.out.println("This user is an admin");
 			String retEmail ="retemail";
 			try {
 				retEmail = h1.grabEmail(request.getParameter("name"));
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
-			System.out.println(retEmail);
-			System.out.println("accepted pass");
-			request.setAttribute("email", retEmail);
+			session.setAttribute("email", retEmail);
+			session.setAttribute("username", username);
+			session.setAttribute("problem", null);
+			response.sendRedirect("ManagerHome.jsp");
+			
+		}
+		
+		//
+		else if(password.equals(um.getPassCheck(um.getUserModel(username)))) {
+			String retEmail ="retemail";
+			try {
+				retEmail = h1.grabEmail(request.getParameter("name"));
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			//System.out.println(retEmail);
+			//System.out.println("accepted pass");
+			//request.setAttribute("email", retEmail);
 			session.setAttribute("email", retEmail);
 			session.setAttribute("username", username);
 			session.setAttribute("problem", null);

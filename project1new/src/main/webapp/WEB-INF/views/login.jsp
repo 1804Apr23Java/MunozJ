@@ -7,6 +7,7 @@
 <title>Hi from login jsp</title>
 </head>
 <body>
+<div>
 	<p><font color="red">${errorMessage}</font></p>
 	<form action="login.do" method="POST">
 		Username<input name="name" type="text" /> <br>
@@ -14,5 +15,6 @@
 		<br>
 		<p><font color ="red">${problem}</font></p>
 	</form>
+	</div>
 </body>
 </html>

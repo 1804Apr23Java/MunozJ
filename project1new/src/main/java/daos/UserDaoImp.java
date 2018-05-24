@@ -43,6 +43,17 @@ public class UserDaoImp implements UserDao{
 		}
 		return um;
 	}
+
+	@Override
+	public String getIsAdmin(UserModel usermodel) {
+
+			return usermodel.getSuperuser();
+	}
+
+	@Override
+	public String getPassCheck(UserModel usermodel) {
+		return usermodel.getPassword();
+	}	
 }
 
 	
