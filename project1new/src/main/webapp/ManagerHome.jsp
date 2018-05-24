@@ -82,7 +82,7 @@ while(resultSet.next()){
 <td>
   	<form action="mgrApprove.html" method="GET">
 		 <input type="submit" value="Approve"/></form>
-  	<form action="mgrApprove.html" method="GET">
+  	<form action="mgrDeny.html" method="GET">
 		 <input type="submit" value="--Deny--"/></form></td>
 </tr>
 <% 
