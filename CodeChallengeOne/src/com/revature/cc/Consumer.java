@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Consumer extends Thread{
-	private List <String> basket= new ArrayList<>();
+	List <Integer> basket= new ArrayList<>();
 	private int maxSize = 5;
 	
 	@Override
@@ -20,11 +20,11 @@ public class Consumer extends Thread{
 		}
 	}
 
-	public List<String> getBasket() {
+	public List<Integer> getBasket() {
 		return basket;
 	}
 
-	public void setBasket(List<String> basket) {
+	public void setBasket(List<Integer> basket) {
 		this.basket = basket;
 	}
 

@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class exCalculator  {
 
 	public static void main(String[] args) throws Calexception{
-
+/*
 		Scanner scan = new Scanner(System.in);
 
 		System.out.println("Please enter 1st number\n");
@@ -85,5 +85,7 @@ public class exCalculator  {
 		}
 		}
 		scan.close();
-	}
+	
+	*/
+	}	
 }
