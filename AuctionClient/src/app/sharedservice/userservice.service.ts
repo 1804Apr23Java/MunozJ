@@ -22,7 +22,9 @@ export class UserserviceService {
     console.log("const ran for the services")
   }
   getUser(user:User):Observable<Object>{
-      return this.http.get(this.baseUrl+"/login", this.options).pipe(map((response:Response) => response.json()));
+    /* return this.http.get(this.baseUrl+"/login" +"/" + "user"+ "/" +user.username + "/" + user.password, this.options).pipe(map((response:Response) => response.json()));
+  }*/
+      return this.http.get(this.baseUrl+"/login" +"/" +user.username + "/" + user.password, this.options).pipe(map((response:Response) => response.json()));
   }
 
   errorHandler(error :Response){
