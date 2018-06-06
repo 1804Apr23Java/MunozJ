@@ -10,3 +10,11 @@ span { width:50%; display:inline-block; }
 span.align-right { text-align:right; }
 
 span a { font-size:16px; }
+
+div.formb {
+  position: absolute;
+  right: 0;
+  width: 200px;
+  height: 120px;
+ 
+} 

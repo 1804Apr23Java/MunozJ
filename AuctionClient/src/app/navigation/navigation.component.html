@@ -12,7 +12,27 @@
       <li><a routerLink="/antiques" routerLinkActive="active">Antiques</a> </li> 
            
     </ul>
+    <!--
     <span class="align-right"><a routerLink="/login" routerLinkActive="active" >Login</a></span> 
+    Login toggle-->
+    <section>
+    
+    <div class="formb" *ngIf="btnText === btnTextShow">
+        <br><br><br>
+      <div class="form-group">
+      <label>username</label>
+      <input class="form-control">
+      </div>
+      <div class="form-group">
+          <label>password</label>
+          <input class="form-control">
+          </div>
+          <span class="align-right"><a><button (click)="toggle()">{{btnText}}</button></a></span> 
+       </div>
+      
+    </section>
+    <span class="align-right"><a><button (click)="toggle()">{{btnText}}</button></a></span> 
+    <!--Login toggle end-->
   </div>
 </nav>
 hi from navigation component
