@@ -1,15 +1,16 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="#">Auction Site</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a routerLink="/home" routerLinkActive="active">Home</a> </li>
+      <li><a routerLink="/home" routerLinkActive="active"></a> </li>
       <li><a routerLink="/electronics" routerLinkActive="active">Electronics</a> </li>   
       <li><a routerLink="/furniture" routerLinkActive="active">Furniture</a> </li>   
       <li><a routerLink="/toys" routerLinkActive="active">Toys</a> </li>    
       <li><a routerLink="/apparel" routerLinkActive="active">Apparel</a> </li>
       <li><a routerLink="/antiques" routerLinkActive="active">Antiques</a> </li> 
+      <li><a routerLink="/profile" routerLinkActive="active">Profile</a> </li> 
            
     </ul>
     <!--
@@ -27,11 +28,11 @@
           <label>password</label>
           <input class="form-control">
           </div>
-          <span class="align-right"><a><button (click)="toggle()">{{btnText}}</button></a></span> 
+          <span class="align-right" ><a><button class="btn btn-primary"(click)="toggle()">{{btnText}}</button></a></span> 
        </div>
       
     </section>
-    <span class="align-right"><a><button (click)="toggle()">{{btnText}}</button></a></span> 
+    <span class="align-right"style="margin: 3px"><a><button class="btn btn-primary"(click)="toggle()" style="margin: 4px">{{btnText}}</button></a></span> 
     <!--Login toggle end-->
   </div>
 </nav>

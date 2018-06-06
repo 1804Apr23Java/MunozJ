@@ -21,11 +21,23 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { UserserviceService } from './sharedservice/userservice.service';
+import { ElectronicsComponent } from './electronics/electronics.component';
+import { FurnitureComponent } from './furniture/furniture.component';
+import { ToysComponent } from './toys/toys.component';
+import { ApparelComponent } from './apparel/apparel.component';
+import { AntiquesComponent } from './antiques/antiques.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'electronics', component: ElectronicsComponent },
+  { path: 'furniture', component: FurnitureComponent },
+  { path: 'toys', component: ToysComponent },
+  { path: 'apparel', component: ApparelComponent },
+  { path: 'antiques', component: AntiquesComponent },
+  { path: 'profile', component: ProfileComponent },
   {
     path: 'login', component: LoginComponent,
     children: [
@@ -42,7 +54,13 @@ const appRoutes: Routes = [
     AppComponent,
     NavigationComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ElectronicsComponent,
+    FurnitureComponent,
+    ToysComponent,
+    ApparelComponent,
+    AntiquesComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
