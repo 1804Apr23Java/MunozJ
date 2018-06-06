@@ -1,8 +1,8 @@
 export class User {
- //   id: number;
+   id: number;
     username: string;
     password: string;
-   /* firstName: string;
+    firstName: string;
     lastName: string;
     email: string;
     adminValue: number;
@@ -12,12 +12,9 @@ export class User {
     street: string;
     city: string;
     state: string;
-    zipcode: string;*/
-    constructor( username: string, password: string){       
-        this.username = username;
-        this.password = password;
-        }
-    /*constructor(id: number, username: string, password: string, firstName: string, lastName: string, email: string, adminValue: number, bankCheck: number, bannedCheck: number, balance: number, street: string, city: string,
+    zipcode: string;
+
+    constructor(id: number, username: string, password: string, firstName: string, lastName: string, email: string, adminValue: number, bankCheck: number, bannedCheck: number, balance: number, street: string, city: string,
         state: string,
         zipcode: string) {
         this.username = username;
@@ -33,7 +30,7 @@ export class User {
         this.state = state;
         this.zipcode = zipcode;
 
-    }*/
+    }
 
 
 }
