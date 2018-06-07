@@ -4,17 +4,21 @@
 <p>Test</p>
 <div>
   <div class="panel-heading">
-    <span class="label label-default label-center">{{title}}</span>
+    <span class="label label-default label-center">SellingItem</span>
   </div>
   <div class="panel-body">
     <div class="list-group">
       <div class="list-group-item list-group-item-demo">
         <div class="form-group">
-          <input [(ngModel)]="item.itemName" placeholder="itemName" class="form-control" /><!-- 
-          <input [(ngModel)]="item.TimeLimit" placeholder="TimeLimit" class="form-control" />
-          <input [(ngModel)]="item.CategoryTag" placeholder="CategoryTag" class="form-control" />
-          <input [(ngModel)]="item.Description" placeholder="Description" class="form-control" />
-          <input [(ngModel)] = "item.CurrentPrice" placeholder="$cost" class="form-control"/>
+          <input [(ngModel)]="item.itemName" placeholder="itemName" class="form-control" />
+          <input [(ngModel)]="item.description" placeholder="description" class="form-control" />
+          <input [(ngModel)]="item.currentPrice" placeholder="$cost" class="form-control" />
+          <input [(ngModel)]="item.categoryTag" placeholder="Tag" class="form-control" />
+          <input [(ngModel)]="item.image" placeholder="Image" class="form-control" />
+          <input [(ngModel)]="item.timeLeft" placeholder="time limit" class="form-control" />
+          <!-- 
+            ///add/{itemName}/{description}/{currentPrice}/{categoryTag}/{image}/{timeLeft}
+             <input [(ngModel)]="item.Description" placeholder="Description" class="form-control" />
          <input [(ngModel)]="item.item" placeholder="$cost" class="form-control" />
           <input [(ngModel)]="item.cost" placeholder="$cost" class="form-control" />
           <input [(ngModel)]="item.cost" placeholder="$cost" class="form-control" /> -->

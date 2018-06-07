@@ -2,35 +2,49 @@ import { User } from "../user";
 
 
 export class Item {
-    id: number;
+
     itemName: string;
-    timeLimit: string;
-    categoryTag: string;
-    sellerId: User;/*
-    image: string;
+    description: string;
     currentPrice: number;
-   
-    buyerId: User;*/
+    categoryTag: string;
+    image: string;
+    timeLeft: number;
+
+
+
+
+    /*
+    sellerId: User;
+       //  ///add/{itemName}/{description}/{currentPrice}/{categoryTag}/{image}/{timeLeft}
+    id: number;
+     buyerId: User;*/
 
     constructor(
-        id: number,
+
         itemName: string,
-        timeLimit: string,
-        categoryTag: string,
-        sellerId: User,/*
-        image: string,
+        description: string,
         currentPrice: number,
+        categoryTag: string,
+        image: string,
+        timeLeft: number
+        /*
+              id: number,
        
+       sellerId: User,
         buyerId: User,*/
     ) {
 
-        this.id=id;
+
         this.itemName = itemName;
-        this.timeLimit=timeLimit;
-        this.categoryTag=categoryTag;
-        this.sellerId=sellerId;/*
-        this.image=image;
-        this.currentPrice=currentPrice;
+        this.timeLeft = timeLeft;
+        this.categoryTag = categoryTag;
+        this.image = image;
+        this.description = description;
+        this.currentPrice = currentPrice;
+        /*
+          this.id=id;
+        this.sellerId=sellerId;
+      
         this.sellerId=sellerId;
         this.buyerId=buyerId;*/
 

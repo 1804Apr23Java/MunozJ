@@ -21,8 +21,10 @@ export class ItemService {
   constructor(private http: Http) { 
     console.log("const ran for the services")
   }
+  ///add/{itemName}/{description}/{currentPrice}/{categoryTag}/{image}/{timeLeft}
+  //this.baseUrl+"/login"+ "/" +user.username + "/" + user.password, this.options
   public addItem(item:Item):Observable<ClientMessage>{
-      return this.http.post(this.baseUrl+"/add" ,item).pipe(map((response:Response) => response.json()));
+      return this.http.get(this.baseUrl+"/add" + "/" +item.itemName+ "/" +item.description+ "/"+ item.currentPrice+ "/" +item.categoryTag+ "/" +item.image+"/"+item.timeLeft, this.options).pipe(map((response:Response) => response.json()));
   }
 
   errorHandler(error :Response){
