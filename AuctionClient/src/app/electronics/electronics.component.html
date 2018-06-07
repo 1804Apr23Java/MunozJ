@@ -1,6 +1,19 @@
-<p>
-  electronics works!
-</p>
+<div class="list-group-item">
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="categoryTag" placeholder="categoryTag" required [(ngModel)]="item1.categoryTag" name="categoryTag">
+    </div>
+    <button type="submit" (click)="getCategoryTag()" class="btn btn-success" >submit</button>
+   <div>
+     <p>List</p>
+      <li *ngFor="let it of item3">
+          {{ it.itemName }}
+          {{ it.description }}
+          {{ it.cost }}
+        </li>
+   </div>
+   </div>
+
+   
 <div class="container">
   <br>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -13,13 +26,14 @@
     </ol>
 
     <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
+    <div class="carousel-inner" role="listbox" *ngFor="let it of item3">
 
-      <div class="item active">
+      <div class="item active" >
         <img src="assets/toys/ele1.jpg" alt="Chania" width="460" height="345">
         <div class="carousel-caption">
-          <h3>For School</h3>
-          <p></p>
+          <h3>Entertainment</h3>
+          <p> {{ it.itemName }}</p>
+          <p> {{ it.description }}</p>
         </div>
       </div>
 
@@ -30,7 +44,7 @@
           <p></p>
         </div>
       </div>
-    
+
       <div class="item">
         <img src="assets/toys/ele3.jpg" alt="Flower" width="460" height="345">
         <div class="carousel-caption">
@@ -46,7 +60,7 @@
           <p></p>
         </div>
       </div>
-  
+
     </div>
 
     <!-- Left and right controls -->
@@ -60,3 +74,4 @@
     </a>
   </div>
 </div>
+

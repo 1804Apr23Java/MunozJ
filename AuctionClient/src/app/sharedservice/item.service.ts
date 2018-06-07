@@ -26,7 +26,11 @@ export class ItemService {
   public addItem(item:Item):Observable<ClientMessage>{
       return this.http.get(this.baseUrl+"/add" + "/" +item.itemName+ "/" +item.description+ "/"+ item.currentPrice+ "/" +item.categoryTag+ "/" +item.image+"/"+item.timeLeft, this.options).pipe(map((response:Response) => response.json()));
   }
-
+  ///getByCategory/{categoryTag}")
+  public getItemByCategory(item:Item):Observable<Item[]>{  
+  
+   return this.http.get(this.baseUrl+"/getByCategory"+"/"+item.categoryTag, this.options).pipe(map((response:Response) => response.json()));
+}
   errorHandler(error :Response){
     return Observable.throw("server Error");
   }
