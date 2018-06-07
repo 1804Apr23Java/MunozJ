@@ -29,6 +29,8 @@ import { ToysComponent } from './toys/toys.component';
 import { ApparelComponent } from './apparel/apparel.component';
 import { AntiquesComponent } from './antiques/antiques.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ItemComponent } from './item/item.component';
+import { ItemService } from './sharedservice/item.service';
 
 
 
@@ -41,6 +43,7 @@ const appRoutes: Routes = [
   { path: 'apparel', component: ApparelComponent },
   { path: 'antiques', component: AntiquesComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'item', component: ItemComponent },
   {
     path: 'login', component: LoginComponent,
     children: [
@@ -64,6 +67,7 @@ const appRoutes: Routes = [
     ApparelComponent,
     AntiquesComponent,
     ProfileComponent,
+    ItemComponent,
     
   ],
   imports: [
@@ -81,7 +85,7 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  providers: [UserserviceService],
+  providers: [UserserviceService, ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
       data => {
         if (data.hasOwnProperty("username")) {
           this.user = <User>data;
-          sessionStorage.setItem("logged user", JSON.stringify(this.user));
+          sessionStorage.setItem("loggedUser", JSON.stringify(this.user));
           this.clientMessage.message="Login Sucess";
-         this._router.navigate(["/profile"]);
+         this._router.navigate(["/item"]);
           
           console.log(data);
           
