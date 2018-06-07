@@ -2,14 +2,19 @@
     <div class="col-sm-6">
       <input type="text" class="form-control" id="categoryTag" placeholder="categoryTag" required [(ngModel)]="item1.categoryTag" name="categoryTag">
     </div>
-    <button type="submit" (click)="getCategoryTag()" class="btn btn-success" >submit</button>
-   <div>
-     <p>List</p>
-      <li *ngFor="let it of item3">
-          {{ it.itemName }}
-          {{ it.description }}
-          {{ it.cost }}
+    <button type="submit" (click)="getCategoryTag()" class="btn btn-success" >search</button>
+   
+   <div class="card"  style="width: 22rem;">
+    <p>List of items by category</p>
+     <ul id="menu">
+      <li *ngFor="let it of item3" class="list-group-item">
+          Item name: {{ it.itemName }}<br>
+          Info: {{ it.description }}
+          Item cost: {{ it.cost }}
+          {{ it.currentPrice }}
+        <input type="text" style="width: 6rem;"> <button class="btn btn-primary">Bid</button>
         </li>
+        </ul>
    </div>
    </div>
 
@@ -26,14 +31,21 @@
     </ol>
 
     <!-- Wrapper for slides -->
+    <!--itemName: string;
+    description: string;
+    currentPrice: number;
+    categoryTag: string;
+    image: string;
+    timeLeft: number;-->
     <div class="carousel-inner" role="listbox" *ngFor="let it of item3">
 
       <div class="item active" >
         <img src="assets/toys/ele1.jpg" alt="Chania" width="460" height="345">
         <div class="carousel-caption">
           <h3>Entertainment</h3>
-          <p> {{ it.itemName }}</p>
-          <p> {{ it.description }}</p>
+          <p> {{ it.itemName }} {{ it.description }}</p>
+     
+         
         </div>
       </div>
 
