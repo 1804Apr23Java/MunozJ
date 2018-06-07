@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import {Router} from '@angular/router';
+
 
 import { AppComponent } from './app.component';
 
@@ -27,6 +29,7 @@ import { ToysComponent } from './toys/toys.component';
 import { ApparelComponent } from './apparel/apparel.component';
 import { AntiquesComponent } from './antiques/antiques.component';
 import { ProfileComponent } from './profile/profile.component';
+
 
 
 
@@ -60,7 +63,8 @@ const appRoutes: Routes = [
     ToysComponent,
     ApparelComponent,
     AntiquesComponent,
-    ProfileComponent
+    ProfileComponent,
+    
   ],
   imports: [
     BrowserModule,

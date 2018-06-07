@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http,Response,Headers, RequestOptions} from '@angular/http';
-
+import { Router } from '@angular/router';
 import {Observable} from 'rxjs';
 
 import { map } from 'rxjs/operators';
@@ -22,9 +22,7 @@ export class UserserviceService {
     console.log("const ran for the services")
   }
   getUser(user:User):Observable<Object>{
-    /* return this.http.get(this.baseUrl+"/login" +"/" + "user"+ "/" +user.username + "/" + user.password, this.options).pipe(map((response:Response) => response.json()));
-  }*/
-      return this.http.get(this.baseUrl+"/login" +"/" +user.username + "/" + user.password, this.options).pipe(map((response:Response) => response.json()));
+      return this.http.get(this.baseUrl+"/login"+ "/" +user.username + "/" + user.password, this.options).pipe(map((response:Response) => response.json()));
   }
 
   errorHandler(error :Response){
