@@ -1,16 +1,39 @@
-
+<!--
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+-->
+<div >
 <button class="btn btn-primary" (click)="logout()">Logout</button>
 <br>
 <div class="card">
-  <img src="assets/img.jpg" alt="John" style="width:100%">
+  <img src="assets/img.jpg" alt="John" style="width:10%">
   <h1>{{user.firstName}} {{user.lastName}}</h1>
   <p class="title">Buyer/seller</p>
   <p>{{user.username}}</p>
   <p>{{user.city}} {{user.state}} {{user.zipcode}}</p>
-  <p>{{user.balance}}</p>  
+  <p>{{user.id}}</p>  
   <a href="#"><i class="fa fa-twitter"></i></a> 
   <a href="#"><i class="fa fa-linkedin"></i></a> 
   <a href="#"><i class="fa fa-facebook"></i></a> 
   <p><button>{{user.email}}</button></p>
 </div>
+<button type="submit" (click)="getCategoryTag()" class="btn btn-success" >view items for sale</button>
+<div class="list-group-item">
+    <div class="col-sm-6">
+    </div>
+    
+   
+   <div class="card"  style="width: 25rem;">    
+     <ul>
+      <li *ngFor="let it of item3" class="list-group-item">
+          Item name: {{ it.itemName }}<br>
+          Info: {{ it.description }}<br>
+          Item cost: {{ it.cost }}
+          {{ it.currentPrice }}        
+        <button (click)="itemBid()"class="btn btn-primary">{{it.id}}</button>
+        </li>
+        </ul>
+      
+      
+   </div>
+   </div>
+   </div>

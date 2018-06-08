@@ -34,6 +34,7 @@ import { ItemService } from './sharedservice/item.service';
 import { AllComponent } from './all/all.component';
 import { UsernavComponent } from './usernav/usernav.component';
 import { Navigation } from 'selenium-webdriver';
+import { ViewItemComponent } from './view-item/view-item.component';
 
 
 
@@ -77,6 +78,7 @@ const appRoutes: Routes = [
     ItemComponent,
     AllComponent,
     UsernavComponent,
+    ViewItemComponent,
     
   ],
   imports: [

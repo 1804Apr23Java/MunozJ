@@ -22,7 +22,7 @@ export class UserserviceService {
   constructor(private http: Http) { 
     console.log("const ran for the services")
   }
-  
+ 
   getUser(user:User):Observable<Object>{
       this.name=user.username;
       console.log(this.name);

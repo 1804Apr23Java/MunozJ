@@ -26,6 +26,10 @@ export class ItemService {
   public addItem(item:Item):Observable<ClientMessage>{
       return this.http.get(this.baseUrl+"/add" + "/" +item.itemName+ "/" +item.description+ "/"+ item.currentPrice+ "/" +item.categoryTag+ "/" +item.image+"/"+item.timeLeft, this.options).pipe(map((response:Response) => response.json()));
   }
+  public getItemBySeller(user:User):Observable<Item[]>{  
+  
+    return this.http.get(this.baseUrl+"/getBySeller"+"/"+user.id, this.options).pipe(map((response:Response) => response.json()));
+ }
   ///getByCategory/{categoryTag}")
   public getItemByCategory(item:Item):Observable<Item[]>{  
   

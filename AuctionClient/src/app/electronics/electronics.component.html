@@ -4,18 +4,18 @@
     </div>
     <button type="submit" (click)="getCategoryTag()" class="btn btn-success" >search</button>
    
-   <div class="card"  style="width: 22rem;">
+   <div class="card"  style="width: 25rem;">
     <p>List of items by category</p>
     
     
      <ul id="menu">
       <li *ngFor="let it of item3" class="list-group-item">
           Item name: {{ it.itemName }}<br>
-          Info: {{ it.description }}
+          Info: {{ it.description }}<br>
           Item cost: {{ it.cost }}
           {{ it.currentPrice }}        
         <input type="text" style="width: 6rem;"> 
-        <button (click)="itemBid()"class="btn btn-primary">Bid</button>
+        <button (click)="itemBid()"class="btn btn-primary">{{it.id}}</button>
         </li>
         </ul>
       

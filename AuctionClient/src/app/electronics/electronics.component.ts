@@ -14,6 +14,7 @@ import { ClientMessage } from '../models/client-message';
 export class ElectronicsComponent implements OnInit {
   public item1: Item = new Item ('', '', 0 , '','',0,0);
   public item2: Item = JSON.parse(sessionStorage.getItem("asd"));
+  public currentItem: number;
    
   public item3 =Array<Item>();
   //public currentTime : Date;
@@ -23,6 +24,9 @@ export class ElectronicsComponent implements OnInit {
   }
   ngOnInit(){
 
+  }
+  public goToItem(): void{
+    
   }
   public getCategoryTag(): void {
     this._itemService.getItemByCategory(this.item1).subscribe(
