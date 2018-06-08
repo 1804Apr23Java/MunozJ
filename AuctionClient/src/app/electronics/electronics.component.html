@@ -6,15 +6,20 @@
    
    <div class="card"  style="width: 22rem;">
     <p>List of items by category</p>
+    
+    
      <ul id="menu">
       <li *ngFor="let it of item3" class="list-group-item">
           Item name: {{ it.itemName }}<br>
           Info: {{ it.description }}
           Item cost: {{ it.cost }}
-          {{ it.currentPrice }}
-        <input type="text" style="width: 6rem;"> <button class="btn btn-primary">Bid</button>
+          {{ it.currentPrice }}        
+        <input type="text" style="width: 6rem;"> 
+        <button (click)="itemBid()"class="btn btn-primary">Bid</button>
         </li>
         </ul>
+      
+      
    </div>
    </div>
 

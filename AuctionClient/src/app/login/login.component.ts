@@ -30,8 +30,9 @@ export class LoginComponent implements OnInit {
         if (data.hasOwnProperty("username")) {
           this.user = <User>data;
           sessionStorage.setItem("loggedUser", JSON.stringify(this.user));
+        
           this.clientMessage.message="Login Sucess";
-         this._router.navigate(["/item"]);
+           this._router.navigate(["/profile"]);
           
           console.log(data);
           

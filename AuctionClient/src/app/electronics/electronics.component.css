@@ -2,9 +2,11 @@ input {
     
     margin: 3px;
 }
-/*
+.table {
+	display: table;   /* Allow the centering to work */
+	margin: 0 auto;
+}
 ul#menu li {
-    display:inline;   
+    display:inline-block;   
 
 }
-*/

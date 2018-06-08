@@ -1,3 +1,4 @@
+<div *ngIf="1">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -11,6 +12,7 @@
       <li><a routerLink="/apparel" routerLinkActive="active">Apparel</a> </li>
       <li><a routerLink="/antiques" routerLinkActive="active">Antiques</a> </li> 
       <li><a routerLink="/profile" routerLinkActive="active">Profile</a> </li> 
+      <li><a routerLink="/item" routerLinkActive="active">Sell Item</a> </li> 
       <li><a routerLink="/login" routerLinkActive="active">Login</a> </li> 
            
     </ul>
@@ -18,28 +20,11 @@
   
     <!--Login toggle-->
     <section>
-    <!--
-    <div class="formb" *ngIf="btnText === btnTextShow">
-        <br><br><br>
-      <div class="form-group">
-      <label>username</label>
-      <input class="form-control">
-      </div>
-      <div class="form-group">
-          <label>password</label>
-          <input class="form-control">
-          </div>
-          <span ><a><button class="btn btn-primary"(click)="toggle()">{{btnText}}</button></a></span> 
-       </div>
-      
    
-    <span style="margin: 3px"><a><button class="btn btn-primary"(click)="toggle()" style="margin: 4px">{{btnText}}</button></a></span> 
-    -->
-    <!--Login toggle end-->
   </section>
   </div>
 </nav>
-hi from navigation component
+</div>
 <!--
 <mat-chip-list>
   <mat-chip>Electronics</mat-chip>

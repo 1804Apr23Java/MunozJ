@@ -31,6 +31,11 @@ export class ItemService {
   
    return this.http.get(this.baseUrl+"/getByCategory"+"/"+item.categoryTag, this.options).pipe(map((response:Response) => response.json()));
 }
+//"/bid/{item_id}/{currentPrice}") //Seller id, item id, new bid price
+public bidItem(item:Item):Observable<Item>{  
+  
+  return this.http.post(this.baseUrl+"/bid"+"/"+item.id+"/"+item.currentPrice, this.options).pipe(map((response:Response) => response.json()));
+}
   errorHandler(error :Response){
     return Observable.throw("server Error");
   }

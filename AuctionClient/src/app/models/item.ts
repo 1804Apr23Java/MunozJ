@@ -9,7 +9,7 @@ export class Item {
     categoryTag: string;
     image: string;
     timeLeft: number;
-
+    id: number;
 
 
 
@@ -26,7 +26,8 @@ export class Item {
         currentPrice: number,
         categoryTag: string,
         image: string,
-        timeLeft: number
+        timeLeft: number,
+        id: number,
         /*
               id: number,
        
@@ -41,6 +42,7 @@ export class Item {
         this.image = image;
         this.description = description;
         this.currentPrice = currentPrice;
+        this.id=id;
         /*
           this.id=id;
         this.sellerId=sellerId;

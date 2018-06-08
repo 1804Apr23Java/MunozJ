@@ -31,6 +31,9 @@ import { AntiquesComponent } from './antiques/antiques.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ItemComponent } from './item/item.component';
 import { ItemService } from './sharedservice/item.service';
+import { AllComponent } from './all/all.component';
+import { UsernavComponent } from './usernav/usernav.component';
+import { Navigation } from 'selenium-webdriver';
 
 
 
@@ -44,6 +47,10 @@ const appRoutes: Routes = [
   { path: 'antiques', component: AntiquesComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'item', component: ItemComponent },
+  { path: 'usernav', component: UsernavComponent },
+
+
+  
   {
     path: 'login', component: LoginComponent,
     children: [
@@ -68,6 +75,8 @@ const appRoutes: Routes = [
     AntiquesComponent,
     ProfileComponent,
     ItemComponent,
+    AllComponent,
+    UsernavComponent,
     
   ],
   imports: [

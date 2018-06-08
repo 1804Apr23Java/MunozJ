@@ -12,7 +12,7 @@ import { ClientMessage } from '../models/client-message';
   styleUrls: ['./electronics.component.css']
 })
 export class ElectronicsComponent implements OnInit {
-  public item1: Item = new Item ('', '', 0 , '','',0);
+  public item1: Item = new Item ('', '', 0 , '','',0,0);
   public item2: Item = JSON.parse(sessionStorage.getItem("asd"));
    
   public item3 =Array<Item>();
@@ -29,6 +29,21 @@ export class ElectronicsComponent implements OnInit {
       data => {
        console.log(data);
        this.item3=<Item[]>data;
+       
+      },
+      error => {
+        console.log("Error");
+      }
+
+    )
+
+
+  }
+  public itemBid(): void {
+    this._itemService.bidItem(this.item1).subscribe(
+      data => {
+       console.log(data);
+       this.item1=<Item>data;
        
       },
       error => {
