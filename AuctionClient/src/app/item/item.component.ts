@@ -15,7 +15,7 @@ export class ItemComponent implements OnInit {
  
   //  ///add/{itemName}/{description}/{currentPrice}/{categoryTag}/{image}/{timeLeft}
   public user: User = JSON.parse(sessionStorage.getItem("loggedUser"));
-  public item: Item = new Item ('', '', 0 , '','',0,0);
+   public item: Item = new Item ('', '', 0 , '','',0,0);
   public currentTime : Date;
   public clientMsg: ClientMessage = new ClientMessage("");
   constructor(private _itemService: ItemService, private _router: Router) { 

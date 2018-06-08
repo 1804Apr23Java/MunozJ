@@ -44,7 +44,7 @@ export class ElectronicsComponent implements OnInit {
 
   }
   public itemBid(): void {
-    this._itemService.bidItem(this.item1).subscribe(
+    this._itemService.bidItem(this.item1.itemName, this.item1.itemName).subscribe(
       data => {
        console.log(data);
        this.item1=<Item>data;

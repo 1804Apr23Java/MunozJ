@@ -11,8 +11,16 @@ import { Item } from '../models/item';
 })
 export class ProfileComponent implements OnInit {
   public item1: Item = new Item ('', '', 0 , '','',0,0);
+  public item4: Item = new Item ('', '', 0 , '','',0,0);
   public item3 =Array<Item>();
   public user: User = JSON.parse(sessionStorage.getItem("loggedUser"));
+  public itemID: Item = JSON.parse(sessionStorage.getItem("itemid"));
+  public currentPrice: Item = JSON.parse(sessionStorage.getItem("curretPrice"));
+
+  public cid = sessionStorage.getItem("cid");
+  public cprice = sessionStorage.getItem("cprice");
+  
+
   constructor(private _router:Router, private _itemService: ItemService) { }
   
   public getCategoryTag(): void {
@@ -37,10 +45,27 @@ export class ProfileComponent implements OnInit {
     }else{
       console.log(this.user.username);
     }
+
+    
   }
   logout(){
     sessionStorage.setItem("loggedUser", null);
     this._router.navigate(["/login"]);
+  }
+  setCid(string: string, string1:string ){
+    sessionStorage.setItem("cid", string);
+    console.log("saved" + sessionStorage.getItem("cid"));
+    
+    sessionStorage.setItem("cprice", string1);
+    console.log("saved" + sessionStorage.getItem("cprice"));
+  
+  }
+ 
+  public bid():void {
+    this._itemService.bidItem(this.cid, this.cprice).subscribe(
+
+
+    )
   }
 
 }

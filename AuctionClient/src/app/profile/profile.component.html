@@ -20,18 +20,26 @@
 <div class="list-group-item">
     <div class="col-sm-6">
     </div>
-    
-   
+    This cid: {{this.cid}}
+    This cprice: {{this.cprice}}
    <div class="card"  style="width: 25rem;">    
      <ul>
       <li *ngFor="let it of item3" class="list-group-item">
           Item name: {{ it.itemName }}<br>
           Info: {{ it.description }}<br>
           Item cost: {{ it.cost }}
-          {{ it.currentPrice }}        
-        <button (click)="itemBid()"class="btn btn-primary">{{it.id}}</button>
+          {{ it.currentPrice }}    <!--    
+        <button (click)="Bid()"class="btn btn-primary">{{it.id}}</button>-->
         </li>
         </ul>
+
+    <input #id placeholder="id" />
+    <input #price placeholder="price" />
+    <button (click)="setCid(id.value, price.value)">save</button>
+    <button (click)="bid()">bid</button>
+       
+          
+          
       
       
    </div>
