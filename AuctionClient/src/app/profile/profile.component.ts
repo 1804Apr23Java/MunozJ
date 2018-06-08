@@ -20,5 +20,9 @@ export class ProfileComponent implements OnInit {
       console.log(this.user.username);
     }
   }
+  logout(){
+    sessionStorage.setItem("loggedUser", null);
+    this._router.navigate(["/login"]);
+  }
 
 }
